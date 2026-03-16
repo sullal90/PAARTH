@@ -1,0 +1,469 @@
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #2f2012;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("assets/background.png") center center / cover no-repeat;
+  filter: blur(6px);
+  transform: scale(1.04);
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  z-index: -1;
+}
+
+.app {
+  min-height: 100vh;
+  text-align: center;
+  padding: 24px 20px 48px;
+  box-sizing: border-box;
+  animation: fadeScreen 0.8s ease;
+}
+
+@keyframes fadeScreen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header */
+
+.header-banner {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 14px 34px;
+  border-radius: 18px;
+  background: rgba(182, 122, 39, 0.78);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.header-banner h1 {
+  margin: 0;
+  color: #fff4dc;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* Setup / welcome screens */
+
+.welcome-banner,
+.verse-select-card {
+  margin: 48px auto 0;
+  max-width: 720px;
+  color: #fff7e8;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.welcome-banner {
+  animation: fadeInUp 1s ease;
+}
+
+.verse-select-card {
+  animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.verse-select-card h2 {
+  margin: 0 0 18px;
+  font-size: 34px;
+  color: #fff7e8;
+}
+
+/* Inputs */
+
+.verse-inputs {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.verse-inputs input,
+.welcome-banner select {
+  width: 84px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #c9a76a;
+  background: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  font-size: 16px;
+  font-family: inherit;
+  color: #2f2012;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.welcome-banner select {
+  width: auto;
+  min-width: 180px;
+  padding: 10px 14px;
+}
+
+/* Buttons */
+
+.recite-button {
+  border: none;
+  border-radius: 16px;
+  background: #f6c34a;
+  color: #2a1908;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 16px 34px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease;
+}
+
+.recite-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.recite-button:active {
+  transform: translateY(0);
+}
+
+.reciting {
+  box-shadow: 0 0 24px rgba(246, 195, 74, 0.95);
+}
+
+/* Main practice layout */
+
+.main-layout {
+  width: min(1200px, 100%);
+  margin: 30px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 34px;
+  flex-wrap: wrap;
+}
+
+/* Cards */
+
+.verse-card,
+.guru-panel {
+  width: 520px;
+  height: 760px;
+  position: relative;
+  background: url("assets/verse-card.jpeg") center center / 100% 100% no-repeat;
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.36));
+  box-sizing: border-box;
+}
+
+.verse-card {
+  overflow: hidden;
+}
+
+/* Verse card */
+
+.verse-card h2 {
+  position: absolute;
+  top: 110px;
+  left: 70px;
+  right: 70px;
+  margin: 0;
+  text-align: center;
+  font-size: 32px;
+  color: #2f2012;
+}
+
+.sanskrit {
+  position: absolute;
+  top: 245px;
+  left: 72px;
+  right: 72px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 1.8;
+  color: #2f2012;
+  word-break: break-word;
+}
+
+.transliteration {
+  position: absolute;
+  left: 90px;
+  right: 90px;
+  bottom: 110px;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.55;
+  font-style: italic;
+  color: #2f2012;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Guru card */
+
+.guru-panel {
+  transition: all 0.4s ease;
+}
+
+.guru-speaking {
+  box-shadow: 0 0 25px rgba(255, 180, 60, 0.8);
+  animation: guruGlow 1.2s infinite alternate;
+}
+
+@keyframes guruGlow {
+  from {
+    box-shadow: 0 0 15px rgba(255, 180, 60, 0.4);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(255, 180, 60, 0.9);
+  }
+}
+
+.guru-panel h3 {
+  position: absolute;
+  top: 110px;
+  left: 70px;
+  right: 70px;
+  margin: 0;
+  text-align: center;
+  font-size: 28px;
+  color: #2f2012;
+}
+
+.guru-subtitle {
+  position: absolute;
+  top: 220px;
+  left: 72px;
+  right: 72px;
+  max-height: 170px;
+  overflow-y: auto;
+  padding: 4px 8px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #2f2012;
+  word-break: break-word;
+  white-space: normal;
+  animation: fadeInText 0.6s ease;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heard-text {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  top: 460px;
+  font-size: 14px;
+  line-height: 1.45;
+  font-style: italic;
+  color: #6b4c2a;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.success-banner {
+  position: absolute;
+  left: 70px;
+  right: 70px;
+  top: 520px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #8b5e00;
+}
+
+.score-panel {
+  position: absolute;
+  top: 52px;
+  left: 60px;
+  right: 60px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2f2012;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .main-layout {
+    gap: 24px;
+  }
+
+  .verse-card,
+  .guru-panel {
+    width: 460px;
+    height: 675px;
+  }
+
+  .verse-card h2,
+  .guru-panel h3 {
+    top: 96px;
+    left: 60px;
+    right: 60px;
+  }
+
+  .score-panel {
+    top: 44px;
+    left: 50px;
+    right: 50px;
+    font-size: 22px;
+  }
+
+  .sanskrit {
+    top: 220px;
+    left: 62px;
+    right: 62px;
+    font-size: 22px;
+  }
+
+  .transliteration {
+    left: 76px;
+    right: 76px;
+    bottom: 100px;
+    font-size: 16px;
+  }
+
+  .guru-subtitle {
+    top: 198px;
+    left: 62px;
+    right: 62px;
+    max-height: 150px;
+    font-size: 17px;
+  }
+
+  .heard-text {
+    left: 62px;
+    right: 62px;
+    top: 410px;
+  }
+
+  .success-banner {
+    left: 60px;
+    right: 60px;
+    top: 470px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .app {
+    padding: 18px 14px 34px;
+  }
+
+  .header-banner {
+    padding: 12px 18px;
+  }
+
+  .header-banner h1 {
+    font-size: 24px;
+  }
+
+  .welcome-banner,
+  .verse-select-card {
+    font-size: 18px;
+  }
+
+  .verse-select-card h2 {
+    font-size: 28px;
+  }
+
+  .verse-card,
+  .guru-panel {
+    width: min(92vw, 420px);
+    height: 620px;
+  }
+
+  .verse-card h2,
+  .guru-panel h3 {
+    font-size: 24px;
+    top: 90px;
+    left: 56px;
+    right: 56px;
+  }
+
+  .score-panel {
+    top: 40px;
+    left: 42px;
+    right: 42px;
+    font-size: 20px;
+  }
+
+  .sanskrit {
+    top: 204px;
+    left: 56px;
+    right: 56px;
+    font-size: 20px;
+    line-height: 1.75;
+  }
+
+  .transliteration {
+    left: 64px;
+    right: 64px;
+    bottom: 92px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .guru-subtitle {
+    top: 182px;
+    left: 56px;
+    right: 56px;
+    max-height: 140px;
+    font-size: 16px;
+  }
+
+  .heard-text {
+    left: 54px;
+    right: 54px;
+    top: 380px;
+    font-size: 13px;
+  }
+
+  .success-banner {
+    left: 54px;
+    right: 54px;
+    top: 438px;
+    font-size: 15px;
+  }
+
+  .recite-button {
+    padding: 14px 24px;
+    font-size: 17px;
+  }
+}
