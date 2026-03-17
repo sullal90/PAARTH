@@ -1,4 +1,8 @@
+
+
 # PAARTH — AI Recitation Companion
+
+![System Architecture](architecture/Architecture.png)
 
 **PAARTH — Pronunciation Analysis and Assisted Recitation Teaching Helper**
 
@@ -18,3 +22,5 @@ System acts like a digital Krishna that:
 Just like Krishna guiding Arjuna in the Gita.
 
 PAARTH combines browser speech input, a Gemini-powered tutoring agent, verse retrieval, and voice-guided feedback to create an interactive Bhagavad Gita recitation coach.
+
+

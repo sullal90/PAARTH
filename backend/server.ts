@@ -46,8 +46,8 @@ app.post("/analyze", async (req, res) => {
 
     res.json(result)
 })
-const port = process.env.PORT || 8080; // Cloud Run injects PORT. 8080 is a good local default.
+const port = Number(process.env.PORT) || 8080; // Cloud Run injects PORT. 8080 is a good local default.
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
     console.log(`🧘 Guru server running on port ${port}`);
 });
